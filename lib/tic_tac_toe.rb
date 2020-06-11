@@ -13,15 +13,15 @@ class TicTacToe
     def initialize(board = nil)
       @board = board || Array.new(9, " ")
     end
-   
+
     def current_player
       turn_count % 2 == 0 ? "X" : "O"
     end
-   
+
     def turn_count
       @board.count{|token| token == "X" || token == "O"}
     end
-   
+
     def display_board
       puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
       puts "-----------"
@@ -54,7 +54,7 @@ class TicTacToe
         puts "Please enter 1-9:"
         index = gets.strip.to_i
         index = input_to_index(index)
-        if valid_move?(index) 
+        if valid_move?(index)
 
             move(index, current_player)
             display_board
@@ -67,20 +67,20 @@ class TicTacToe
             win_index_1 = combination[0]
             win_index_2 = combination[1]
             win_index_3 = combination[2]
-        
+
             position_1 = @board[win_index_1]
             position_2 = @board[win_index_2]
             position_3 = @board[win_index_3]
             #binding.pry
             if position_1 == "X" && position_2 == "X" && position_3 == "X"
               return combination
-        
+
             elsif position_1 == "O" && position_2 == "O" && position_3 == "O"
               return combination
-            
-              
+
+
             end
-            
+
           end
           return false
     end
@@ -111,26 +111,26 @@ class TicTacToe
         else
             nil
         end
-        
+
     end
     def play
         display_board
         until over?
-            
-            
+
+
             turn
         end
-            
+
         if draw?
             puts "Cat's Game!"
-                
+
         elsif won?
-                
+
             puts "Congratulations #{winner}!"
         else
-    
+
         end
-        
+
     end
-    
+
   end
